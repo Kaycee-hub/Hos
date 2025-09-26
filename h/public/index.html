@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>DocCheck</title><link rel="stylesheet" href="style.css"></head><body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><img src="logo.svg" class="logo"><div class="brand-text"><strong>Doc</strong>Check</div></div>
+    <nav class="nav">
+      <button data-page="dashboard" class="nav-btn active">🏠 Dashboard</button>
+      <button data-page="appointments" class="nav-btn">🗓️ Appointments</button>
+      <button data-page="patients" class="nav-btn">🧑‍⚕️ Patients</button>
+      <button data-page="messages" class="nav-btn">✉️ Messages</button>
+      <button data-page="prescriptions" class="nav-btn">📄 Prescriptions</button>
+      <button data-page="settings" class="nav-btn">⚙️ Settings</button>
+      <button data-page="signup" class="nav-btn">👤 Sign Up</button>
+    </nav>
+    <div class="logout"><button id="logoutBtn">🔌 Logout</button></div>
+  </aside>
+  <main class="main">
+    <header class="header"><h1 id="pageTitle">Dashboard</h1><div class="header-right"><input id="search" placeholder="Search..."><div class="profile"><div class="bell">🔔<span class="badge" id="notifCount">6</span></div><img src="https://i.pravatar.cc/40?img=3" class="avatar"><div class="user-info"><div id="userName">Guest</div><div class="role" id="userRole"></div></div></div></div></header>
+    <section id="dashboard" class="page active">
+      <div class="stats">
+        <div class="card"><div class="card-title">Appointments</div><div class="card-value" id="statAppointments">0</div><div class="card-sub">Total Appointments</div></div>
+        <div class="card"><div class="card-title">Patients</div><div class="card-value" id="statPatients">0</div><div class="card-sub">Total Patients</div></div>
+        <div class="card"><div class="card-title">Prescriptions</div><div class="card-value" id="statPresc">0</div><div class="card-sub">Total Prescriptions</div></div>
+      </div>
+      <div class="chart-card card white"><h3>Appointment Chart</h3><canvas id="chartCanvas" width="800" height="260"></canvas></div>
+      <div class="appointments-card card white"><div class="card-header"><h3>Today's Appointments</h3><div><button id="createBtn" class="primary">+ Create New Appointment</button></div></div><table class="table" id="appointmentsTable"><thead><tr><th>Patient</th><th>Time</th><th>Date</th><th>Reason</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+    </section>
+    <section id="appointments" class="page"><h2>Appointments</h2><div class="card white"><table class="table" id="appointmentsTableAll"><thead><tr><th>Patient</th><th>Time</th><th>Date</th><th>Reason</th><th>Status</th></tr></thead><tbody></tbody></table></div></section>
+    <section id="patients" class="page"><h2>Patients</h2><div class="card white" id="patientsList"></div></section>
+    <section id="messages" class="page"><h2>Messages</h2><div class="card white" id="messagesList"></div></section>
+    <section id="prescriptions" class="page"><h2>Prescriptions</h2><div class="card white">No prescriptions yet.</div></section>
+    <section id="settings" class="page"><h2>Settings</h2><div class="card white" id="settingsCard">User settings and preferences will go here.</div></section>
+    <section id="signup" class="page"><h2>Sign Up</h2><div class="card white"><form id="signupForm"><label>Full name<input name="name" required></label><label>Email<input name="email" required></label><label>Password<input name="password" type="password" required></label><label>Role<select name="role"><option value="staff">Staff</option><option value="doctor">Doctor</option></select></label><div style="text-align:right;margin-top:8px"><button type="submit" class="primary">Create account</button></div></form></div></section>
+    <section id="forgot" class="page"><h2>Forgot Password</h2><div class="card white"><form id="forgotForm"><label>Email<input name="email" required></label><div style="text-align:right;margin-top:8px"><button type="submit" class="primary">Send reset email</button></div></form></div></section>
+  </main>
+</div>
+<!-- modal -->
+<div id="modal" class="modal hidden"><div class="modal-box"><h3>Create New Appointment</h3><form id="apptForm"><label>Patient name<input name="patient" required></label><label>Time<input name="time" placeholder="9:00AM"></label><label>Date<input name="date" placeholder="2025-12-03"></label><label>Reason<input name="reason"></label><div class="modal-actions"><button type="button" id="cancelBtn">Cancel</button><button type="submit" class="primary">Create</button></div></form></div></div>
+<script src="app.js"></script></body></html>
